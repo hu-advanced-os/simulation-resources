@@ -1,4 +1,4 @@
-## Project: simulation project artifacts 
+## Project: simulation project resources 
 
-Artifacts for gang-scheduling project.
+Resources for gang-scheduling project.
 
