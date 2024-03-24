@@ -14,6 +14,8 @@ https://www.anaconda.com/download
 
 https://www.hostinger.com/tutorials/how-to-install-anaconda-on-ubuntu/
 
+https://docs.anaconda.com/free/anaconda/hashes/index.html
+
 **Round-Robin Implementation**
 
 https://github.com/ihavenonickname/round-robin-simulator
