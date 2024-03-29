@@ -1,0 +1,75 @@
+{
+    "$id": "",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "simulation schedule",
+    "type": "object",
+    "description": "simulation job schedule",
+    "properties": {
+	"jobs": {
+            "type": "array",
+            "id": "jobs",
+            "minItems": 1,
+            "items": {
+		"type": "object",
+		"properties": {
+		    "job": {
+			"type": "object",
+			"id": "job",
+			"properties": {
+			    "id" : {
+				"type": "integer",
+				"minimum": 1
+			    },
+			    "type" : {
+				"type": "string",
+				"enum": ["interactive", "unattended"]
+			    },
+			    "processing-unit"  : {
+				"type" : "string",
+				"enum": ["CPU", "GPU"]
+			    },
+			    "tasks": {
+				"type": "array",
+				"id": "tasks",
+				"minItems": 1,
+				"items": {
+				    "type" : "object",
+				    "minProperties": 1,
+				    "properties" : {
+					"task": {
+					    "type": "object",
+					    "id": "task",
+					    "properties": {                                
+						"id" : {
+						    "type": "integer",
+						    "minimum": 1
+						},
+						"bursts": {
+						    "type": "array",
+						    "id": "bursts",
+						    "minItems": 1,
+						    "items": {
+							"type": "integer",
+							"minimum": 1
+						    }
+						}
+					    },
+					    "required": [ "id", "bursts" ],
+					    "additionalProperties": false
+					}
+				    },
+				    "required": [ "task" ],
+				    "additionalProperties": false
+				}
+			    }
+			},
+			"required": [ "id" , "type", "processing-unit", "tasks" ],
+			"additionalProperties": false
+		    }
+		},
+		"additionalProperties": false
+	    }
+	}
+    },
+    "additionalProperties": false
+}
