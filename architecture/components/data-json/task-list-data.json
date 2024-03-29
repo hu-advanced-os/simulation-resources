@@ -1,0 +1,46 @@
+{
+    "jobs": [
+	{
+	    "job": {
+		"id": 1,
+		"type": "interactive",
+		"processing-unit": "GPU",
+		"tasks": [
+		    {
+			"task": {
+			    "id": 1,
+			    "bursts": [1, 20, 1, 40, 20, 100, 50, 40, 50]
+			}
+		    },
+		    {
+			"task": {
+			    "id": 2,
+			    "bursts": [5, 20, 5, 40, 80, 10, 80, 40]
+			}
+		    }
+		]
+	    }
+	},
+	{
+	    "job": {
+		"id": 2,
+		"type": "interactive",
+		"processing-unit": "GPU",
+		"tasks": [
+		    {
+			"task": {
+			    "id": 1,
+			    "bursts": [1, 20, 1, 40, 20, 100, 50, 40, 50]
+			}
+		    },
+		    {
+			"task": {
+			    "id": 2,
+			    "bursts": [5, 20, 5, 40, 80, 10, 80, 40]
+			}
+		    }
+		]
+	    }
+	}
+    ]
+}

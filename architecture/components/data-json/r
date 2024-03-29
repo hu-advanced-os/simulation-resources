@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "start"
+
+# python EXAMPLE VALIDATION without schema
+python3 task-list-demjson.py -data task-list-data.json -schema task-list-schema.json
+
+# python EXAMPLE VALIDATION with schema
+python3 task-list-jsonschema.py -data task-list-data.json -schema task-list-schema.json 
+
+echo "stop"
