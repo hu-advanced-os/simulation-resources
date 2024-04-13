@@ -1,75 +1,118 @@
 {
-    "$id": "",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "simulation schedule",
-    "type": "object",
-    "description": "simulation job schedule",
-    "properties": {
-	"jobs": {
-            "type": "array",
-            "id": "jobs",
-            "minItems": 1,
-            "items": {
-		"type": "object",
-		"properties": {
-		    "job": {
-			"type": "object",
-			"id": "job",
-			"properties": {
-			    "id" : {
-				"type": "integer",
-				"minimum": 1
-			    },
-			    "type" : {
-				"type": "string",
-				"enum": ["interactive", "unattended"]
-			    },
-			    "processing-unit"  : {
-				"type" : "string",
-				"enum": ["CPU", "GPU"]
-			    },
-			    "tasks": {
-				"type": "array",
-				"id": "tasks",
-				"minItems": 1,
-				"items": {
-				    "type" : "object",
-				    "minProperties": 1,
-				    "properties" : {
-					"task": {
-					    "type": "object",
-					    "id": "task",
-					    "properties": {                                
-						"id" : {
-						    "type": "integer",
-						    "minimum": 1
-						},
-						"bursts": {
-						    "type": "array",
-						    "id": "bursts",
-						    "minItems": 1,
-						    "items": {
-							"type": "integer",
-							"minimum": 1
-						    }
-						}
-					    },
-					    "required": [ "id", "bursts" ],
-					    "additionalProperties": false
-					}
-				    },
-				    "required": [ "task" ],
-				    "additionalProperties": false
-				}
-			    }
-			},
-			"required": [ "id" , "type", "processing-unit", "tasks" ],
-			"additionalProperties": false
-		    }
-		},
-		"additionalProperties": false
-	    }
-	}
+  "$id": "",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "simulation schedule",
+  "type": "object",
+  "description": "simulation job schedule",
+  "properties": {
+    "max-cpu-per-job": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 30000
     },
-    "additionalProperties": false
+    "jobs": {
+      "type": "array",
+      "id": "jobs",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "type": "object",
+            "id": "job",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "arrival-time": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "interactive",
+                  "unattended"
+                ]
+              },
+              "processing-unit": {
+                "type": "string",
+                "enum": [
+                  "CPU",
+                  "GPU"
+                ]
+              },
+              "priority": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "num-tasks": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "tasks": {
+                "type": "array",
+                "id": "tasks",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "properties": {
+                    "task": {
+                      "type": "object",
+                      "id": "task",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "bursts": {
+                          "type": "array",
+                          "id": "bursts",
+                          "minItems": 1,
+                          "items": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "bursts"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "task"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "arrival-time",
+              "type",
+              "processing-unit",
+              "priority",
+              "num-tasks",
+              "tasks"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "job"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "max-cpu-per-job",	
+    "jobs"	
+  ],
+  "additionalProperties": false
 }

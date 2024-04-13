@@ -1,0 +1,27 @@
+README
+======
+
+1. file r shows how to run this.
+
+2. task-list-data shows example of input json data.
+
+3. task-list-schema.json contains the json schema.
+
+4. task-list-demjson.py validaiton but no schema check.
+
+5. task-list-jsonschema.py validation and schema check but validation not as good as demjson.
+
+ideally use both.
+
+NOTE:
+
+Checks to be done in code.
+
+1. Task Id uniqueness check.
+
+2. Task count check.
+
+3. PU Request validity check.
+
+
+
